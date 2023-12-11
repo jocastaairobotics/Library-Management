@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="card w-75 m-auto my-5">
+  <div class="d-flex justify-content-between p-4">
+    <h3>Authors</h3>
+    <a href="{% url 'AuthorCreateView' %}" class="btn btn-primary">Add Author</a>
+  </div>
+  <div class="card-body">
+<table class="table align-middle">
+  <thead>
+    <tr>
+      <th scope="col">Author</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% if object_list %}
+  {% for author in object_list%}
+    <tr>
+      <th>{{author.name}}</th>
+      <td>
+        <a href="{% url 'AuthorUpdateView' author.pk %}"><button type="button" class="btn btn-link btn-sm px-3" data-mdb-ripple-init data-ripple-color="primary">
+          <i class="fas fa-pen"></i>
+        </button>
+        </a>
+        <a href="{% url 'AuthorDeleteView' author.pk %}">
+          <button type="button" class="btn btn-link btn-sm px-3" data-mdb-ripple-init data-ripple-color="primary">
+          <i class="fas fa-trash"></i>
+        </button>
+        </a>
+      </td>
+    </tr>
+  {% endfor %}
+  {% else %}
+  <tr>
+    No Author Found
+  </tr>
+  {% endif %}
+  </tbody>
+</table>
+    </div>
+  </div>
+{% endblock %}

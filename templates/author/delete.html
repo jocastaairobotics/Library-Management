@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block body%}
+<div class="card w-50 m-auto my-5">
+<form class="m-auto p-5" method="post">
+
+    {% csrf_token %}
+
+    are you sure want to delete {{object.name}}
+
+    <input class="btn btn-primary" type="submit" value="Submit"/>
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{%extends 'index.html'%}
+
+{%block body%}
+
+<div class="card w-50 m-auto">
+    <div class="card-body">
+        <form action="{% url 'LoginRequest' %}" method="post">
+            {% csrf_token %}
+    {{form.as_p}}
+<input type="submit" class="btn btn-primary"/>
+</form>
+    </div>
+</div>
+
+{% endblock %}
